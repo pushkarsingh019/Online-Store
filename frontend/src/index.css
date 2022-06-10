@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+:root {
+    --first-color : #222831;
+    --second-color : #393E46;
+    --third-color : #00ADB5;
+    --forth-color : #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+    font-family: 'Space Grotesk', sans-serif;
+    box-sizing: border-box;
+
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: var(--second-color);
+    color: var(--forth-color);
+    padding: 1rem 0rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--second-color);
+    color: var(--forth-color);
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+.navbar-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-links li {
+    list-style: none;
+    border-radius: 12px;
+}
+
+.navbar-links li:hover {
+    background-color: #555;
+}
+
+.navbar-links li a{
+    text-decoration: none;
+    color: var(--forth-color);
+    padding: 1rem;
+    display: block;
+}
+
+.toggle-button{
+    position: absolute;
+    /* top: .75rem; */
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--forth-color);
+    border-radius: 10px;
+}
+
+main {
+    display: flex;
+    height: 650px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width : 430px){
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+}
+
