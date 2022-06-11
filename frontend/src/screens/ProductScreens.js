@@ -33,7 +33,7 @@ function ProductScreens() {
                     <div className='shop-table'>
                         <span>Status :</span> <span>{product.countInStock === 0? "Out of stock" : "In Stock"}</span>
                     </div>
-                    <Button text="Add To Cart" class="cta button" />
+                    <Button diabled={product.countInStock === 0? 'true' : 'false'} text={product.countInStock ===0? "Out of stock" : "Add To Cart"} class="cta button" />
                 </div>
             </div>
         </div>
