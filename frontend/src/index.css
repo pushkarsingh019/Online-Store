@@ -139,8 +139,62 @@
 /* rating section */
 
 
+/* product screen */
+.screen {
+    margin: 16px;
+    padding: 16px;
+}
+/* 
+.product-screen img {
+    width: 100%;
+} */
+
+.product-info-section {
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: space-around;
+}
+
+.links {
+    margin: 0px 20px;
+    text-decoration: none;
+    color: var(--second-color);
+}
+
+.product-section{
+    margin: 20px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.product-shopping-section{
+    display : flex;
+    flex-direction: column;
+    place-content: center;
+}
+.shop-table {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px ;
+}
 
 
+/* button */
+.button {
+    padding: 12px 16px;
+    border:  solid;
+    border-radius: 12px;
+}
+
+.cta {
+    background-color: var(--first-color);
+    color: var(--forth-color);
+    margin: 10px 0px 0px 0px;
+}
 
 
 
