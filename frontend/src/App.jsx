@@ -1,13 +1,14 @@
 import React from "react"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HomeScreen from "./screens/HomeScreen";
 
 function App(){
     return(
         <>
         <Header />
         <main>
-            <h1>Welcome to the online shop!</h1>
+            <HomeScreen />
         </main>
         <Footer />
         </>
