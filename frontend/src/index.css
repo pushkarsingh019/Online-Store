@@ -40,6 +40,11 @@
     margin: 1rem;
 }
 
+.brand-title-link {
+    color: var(--forth-color);
+    text-decoration: none;
+}
+
 .navbar-links ul {
     margin: 0;
     padding: 0;

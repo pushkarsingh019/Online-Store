@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
     <nav className="navbar">
         <div className="brand-title">
-            The Online Shop
+            <Link className='brand-title-link' to="/">The Online Shop</Link>
         </div>
         <a href="#" className='toggle-button'>
                 <span className="bar"></span>
@@ -13,8 +14,8 @@ function Header() {
             </a>
         <div className="navbar-links">
             <ul>
-                <li><a href="/shop"><i class="fa-solid fa-store"></i> Shop </a></li>
-                <li><a href="/signin"><i class="fa-solid fa-user"></i> Sign in</a></li>
+                <li><Link to="/shop"><i class="fa-solid fa-store"></i>Shop</Link></li>
+                <li><Link to="/signin"><i class="fa-solid fa-user"></i> Sign in</Link></li>
             </ul>
         </div>
     </nav>
