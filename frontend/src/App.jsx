@@ -17,7 +17,7 @@ function App(){
                 <Route path="/products/:productId" element={<ProductScreens />} />
             </Routes>
         </main>
-        {/* <Footer /> */}
+        <Footer />
         </BrowserRouter>
     )
 }
