@@ -1,8 +1,23 @@
-import React from 'react'
-import products from "../products";
+import React, {useState} from 'react'
 import Product from '../components/Product';
+import axios from "axios"
 
 function HomeScreen() {
+
+  const [products, setProducts] = useState([]);
+
+
+  useState(()=> {
+    const fetchProducts = async () => {
+      const {data} = await axios.get("/api/products");
+      setProducts(data)
+    }
+
+    fetchProducts();
+
+  })
+
+
   return (
     <div className="home-screen">
         <h1>Latest Products</h1>

@@ -14,7 +14,7 @@ function App(){
         <main>
             <Routes>
                 <Route path="/" element={<HomeScreen />} />
-                <Route path="/products/:userId" element={<ProductScreens />} />
+                <Route path="/products/:productId" element={<ProductScreens />} />
             </Routes>
         </main>
         {/* <Footer /> */}
