@@ -12,6 +12,7 @@ connectDB();
 
 
 const importData = async () => {
+    console.log("import function activated")
     try {
 
         await Product.deleteMany();
@@ -35,4 +36,21 @@ const importData = async () => {
     }
 }
 
-importData();
+const deleteData = async () => {
+    console.log("deleted function activated")
+    try {
+        await User.deleteMany();
+        await Product.deleteMany();
+        await Order.deleteMany();
+
+        console.log("Deleted Succesfully!")
+
+        process.exit();
+    } catch (error) {
+        
+        console.log(`Error  : ${error.message}`);
+    }
+}
+
+
+process.argv[2] === '-d'?deleteData() : importData();
