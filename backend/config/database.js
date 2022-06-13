@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
 
+const MONGO_URL = "mongodb+srv://pushkarsingh019:Mf0tOLDoDLORWVk5@cluster0.sd4ew.mongodb.net/onlineShop";
+
 const connectDB = async () => {
     try {
 
-        const conn = await mongoose.connect(process.env.MONGO_URL)
+        const conn = await mongoose.connect(MONGO_URL);
 
         console.log(`MongoDb Connected : ${conn.connection.host}`);
         
