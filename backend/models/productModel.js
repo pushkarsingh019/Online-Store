@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 import reviewSchema from "./reviewModel.js";
 
 const productSchema = new mongoose.Schema({
