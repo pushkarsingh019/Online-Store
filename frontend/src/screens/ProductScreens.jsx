@@ -1,28 +1,33 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {Link, useParams} from "react-router-dom";
 import Rating from '../components/Rating';
 import Button from '../components/Button';
-import axios from 'axios';
+import { listProductDeatils } from '../actions/productActions';
+import {useDispatch, useSelector} from "react-redux";
+import Loading from '../components/Loading';
 
 function ProductScreens() {
 
     let {productId} = useParams();
-    const [product, setProduct] = useState([]);
 
+    const dispatch = useDispatch();
+    const productDetails = useSelector((state) => state.productDetails);
+
+    const {loading, error, product} = productDetails;
+
+    console.log(product);
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            const {data} = await axios.get(`/api/products/${productId}`);
-            setProduct(data)
-        }
+       dispatch(listProductDeatils(productId));
+    }, [dispatch, productId]);
 
-        fetchProduct();
-    })
+
 
     return(
         <div className='product-screen screen'>
             <Link className="links" to="/">Go Back</Link>
-            <div className='product-section' >
+            {loading ? <Loading /> : error ? <h3>{error}</h3> : 
+                <div className='product-section' >
                 <div>
                     <img src={product.image} alt={product.name} />
                 </div>
@@ -44,7 +49,8 @@ function ProductScreens() {
                     </div>
                     <Button diabled={product.countInStock === 0? 'true' : 'false'} text={product.countInStock ===0? "Out of stock" : "Add To Cart"} class="cta button" />
                 </div>
-            </div>
+            </div> 
+                }
         </div>
     )
 }
