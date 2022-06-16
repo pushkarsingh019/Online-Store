@@ -15,6 +15,7 @@ function App(){
             <Routes>
                 <Route path="/" element={<HomeScreen />} />
                 <Route path="/products/:productId" element={<ProductScreens />} />
+                <Route path="/cart/:id" element={<h3>Cart Page</h3>} />
             </Routes>
         </main>
         {/* <Footer /> */}

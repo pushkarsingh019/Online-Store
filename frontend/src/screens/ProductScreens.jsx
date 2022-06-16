@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react'
-import {Link, useParams} from "react-router-dom";
+import {Link, Navigate, useParams} from "react-router-dom";
 import Rating from '../components/Rating';
-import Button from '../components/Button';
 import { listProductDeatils } from '../actions/productActions';
 import {useDispatch, useSelector} from "react-redux";
 import Loading from '../components/Loading';
+import { useNavigate } from "react-router-dom";
 
 function ProductScreens() {
 
     let {productId} = useParams();
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const productDetails = useSelector((state) => state.productDetails);
@@ -21,6 +22,10 @@ function ProductScreens() {
 
 
     const [quantity, setQuantity] = useState(0);
+
+    function addToCartHandler(){
+        navigate(`/cart/${productId}?quantity=${quantity}`);
+    }
 
 
     return(
@@ -57,7 +62,7 @@ function ProductScreens() {
                             </select>
                         </div>
                     }
-                    <Button diabled={product.countInStock === 0? 'true' : 'false'} text={product.countInStock ===0? "Out of stock" : "Add To Cart"} class="cta button" />
+                    <button onClick={addToCartHandler} className={product.countInStock === 0? "disabled cta button" : "cta button"}>{product.countInStock ===0? "Out of stock" : "Add To Cart"}</button>
                 </div>
             </div> 
                 }

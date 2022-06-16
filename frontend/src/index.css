@@ -207,6 +207,14 @@
     justify-content: center;
 }
 
+.disabled {
+    background-color: #555;
+}
+.disabled:hover {
+    cursor: not-allowed;
+    transform: none;
+}
+
 
 
 /* media queries */
