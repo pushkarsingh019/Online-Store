@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link, useParams} from "react-router-dom";
 import Rating from '../components/Rating';
 import Button from '../components/Button';
@@ -15,12 +15,12 @@ function ProductScreens() {
 
     const {loading, error, product} = productDetails;
 
-    console.log(product);
-
     useEffect(() => {
        dispatch(listProductDeatils(productId));
     }, [dispatch, productId]);
 
+
+    const [quantity, setQuantity] = useState(0);
 
 
     return(
@@ -47,6 +47,16 @@ function ProductScreens() {
                     <div className='shop-table'>
                         <span>Status :</span> <span>{product.countInStock === 0? "Out of stock" : "In Stock"}</span>
                     </div>
+                    {product.countInStock === 0? null : 
+                        <div className="shop-table">
+                            <span>Quantity: </span>
+                            <select name="quantity-select" onChange={e => setQuantity(e.target.value)}>
+                                {[...Array(product.countInStock).keys()].map((x) => {
+                                    return (<option key={x+1} value={x+1}>{x+1}</option>)
+                                })}
+                            </select>
+                        </div>
+                    }
                     <Button diabled={product.countInStock === 0? 'true' : 'false'} text={product.countInStock ===0? "Out of stock" : "Add To Cart"} class="cta button" />
                 </div>
             </div> 
