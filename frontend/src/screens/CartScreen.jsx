@@ -1,14 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import { addToCart } from '../actions/cartActions';
-import {useParams, useSearchParams} from "react-router-dom";
+import { addToCart, removeFromCart } from '../actions/cartActions';
+import {useParams, useSearchParams, useNavigate} from "react-router-dom";
 import "../index.css"
 
 
 function CartScreen() {
 
   const {productId} = useParams();
+  const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams("");
+  const [removeId, setRemoveId] = useState();
   let quantity = Number(searchParams.toString().split("=")[1]);
 
   const dispatch = useDispatch();
@@ -17,7 +19,16 @@ function CartScreen() {
 
   useEffect(() => {
     dispatch(addToCart(productId, quantity));
+    navigate('/cart/')
   })
+
+  function removeItemHandler(id){
+    setRemoveId(id);
+
+    dispatch(removeFromCart(removeId));
+    navigate('/cart');
+    dispatch(addToCart(productId, quantity));
+  }
 
 
 
@@ -44,7 +55,7 @@ function CartScreen() {
               </div>
               <div className='info-section'>
                   <h3>${item.price}</h3>
-                  <button className='button delete-item'> <i className="fa-solid fa-circle-trash" /> Remove from Cart</button>
+                  <button onClick={() => removeItemHandler(item.product)} className='button delete-item'> <i className="fa-solid fa-circle-trash" /> Remove from Cart</button>
               </div>
 
             </div>
