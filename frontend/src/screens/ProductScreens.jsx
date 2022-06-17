@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import {Link, Navigate, useParams} from "react-router-dom";
+import {Link, useParams, useNavigate} from "react-router-dom";
 import Rating from '../components/Rating';
 import { listProductDeatils } from '../actions/productActions';
 import {useDispatch, useSelector} from "react-redux";
 import Loading from '../components/Loading';
-import { useNavigate } from "react-router-dom";
 
 function ProductScreens() {
 
@@ -21,7 +20,7 @@ function ProductScreens() {
     }, [dispatch, productId]);
 
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
     const navigate = useNavigate();
     function addToCartHandler(){
