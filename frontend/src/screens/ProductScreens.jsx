@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function ProductScreens() {
 
     let {productId} = useParams();
-    const navigate = useNavigate();
+    
 
     const dispatch = useDispatch();
     const productDetails = useSelector((state) => state.productDetails);
@@ -23,6 +23,7 @@ function ProductScreens() {
 
     const [quantity, setQuantity] = useState(0);
 
+    const navigate = useNavigate();
     function addToCartHandler(){
         navigate(`/cart/${productId}?quantity=${quantity}`);
     }
@@ -62,7 +63,7 @@ function ProductScreens() {
                             </select>
                         </div>
                     }
-                    <button onClick={addToCartHandler} className={product.countInStock === 0? "disabled cta button" : "cta button"}>{product.countInStock ===0? "Out of stock" : "Add To Cart"}</button>
+                    <button onClick={product.countInStock === 0? null : addToCartHandler} className={product.countInStock === 0? "disabled cta button" : "cta button"}>{product.countInStock ===0? "Out of stock" : "Add To Cart"}</button>
                 </div>
             </div> 
                 }
