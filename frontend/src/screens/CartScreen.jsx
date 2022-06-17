@@ -19,7 +19,6 @@ function CartScreen() {
 
   useEffect(() => {
     dispatch(addToCart(productId, quantity));
-    navigate('/cart/')
   })
 
   function removeItemHandler(id){
