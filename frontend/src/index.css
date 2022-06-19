@@ -201,11 +201,65 @@
     transform: scale(1.1);
     cursor: pointer;
 }
+.delete-item {
+    width: 75%;
+    border: 1px red solid;
+    color: black;
+    background-color: white;
+    transition: .3s ease-in-out;
+}
+
+.delete-item:hover {
+    color: white;
+    background-color: red;
+}
 
 .product-shopping-section .cta {
     width: 70%;
     justify-content: center;
 }
+
+.disabled {
+    background-color: #555;
+}
+.disabled:hover {
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* cart screen */
+.cart-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 3rem 0rem;
+}
+
+.cart-component {
+    margin: 2rem 0rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.summary-section {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 2rem 0rem;
+}
+
+.Link h3 {
+    text-decoration: none;
+}
+
+
 
 
 

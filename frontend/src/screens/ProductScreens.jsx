@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react'
-import {Link, useParams} from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import {Link, useParams, useNavigate} from "react-router-dom";
 import Rating from '../components/Rating';
-import Button from '../components/Button';
 import { listProductDeatils } from '../actions/productActions';
 import {useDispatch, useSelector} from "react-redux";
 import Loading from '../components/Loading';
@@ -9,18 +8,24 @@ import Loading from '../components/Loading';
 function ProductScreens() {
 
     let {productId} = useParams();
+    
 
     const dispatch = useDispatch();
     const productDetails = useSelector((state) => state.productDetails);
 
     const {loading, error, product} = productDetails;
 
-    console.log(product);
-
     useEffect(() => {
        dispatch(listProductDeatils(productId));
     }, [dispatch, productId]);
 
+
+    const [quantity, setQuantity] = useState(1);
+
+    const navigate = useNavigate();
+    function addToCartHandler(){
+        navigate(`/cart/${productId}?quantity=${quantity}`);
+    }
 
 
     return(
@@ -47,7 +52,17 @@ function ProductScreens() {
                     <div className='shop-table'>
                         <span>Status :</span> <span>{product.countInStock === 0? "Out of stock" : "In Stock"}</span>
                     </div>
-                    <Button diabled={product.countInStock === 0? 'true' : 'false'} text={product.countInStock ===0? "Out of stock" : "Add To Cart"} class="cta button" />
+                    {product.countInStock === 0? null : 
+                        <div className="shop-table">
+                            <span>Quantity: </span>
+                            <select name="quantity-select" onChange={e => setQuantity(e.target.value)}>
+                                {[...Array(product.countInStock).keys()].map((x) => {
+                                    return (<option key={x+1} value={x+1}>{x+1}</option>)
+                                })}
+                            </select>
+                        </div>
+                    }
+                    <button onClick={product.countInStock === 0? null : addToCartHandler} className={product.countInStock === 0? "disabled cta button" : "cta button"}>{product.countInStock ===0? "Out of stock" : "Add To Cart"}</button>
                 </div>
             </div> 
                 }

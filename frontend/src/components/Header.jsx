@@ -14,11 +14,12 @@ function Header() {
             </a>
         <div className="navbar-links">
             <ul>
-                <li><Link to="/shop"><i class="fa-solid fa-store"></i>Shop</Link></li>
+                <li><Link to="/"><i class="fa-solid fa-store"></i>Shop</Link></li>
                 <li><Link to="/signin"><i class="fa-solid fa-user"></i> Sign in</Link></li>
+                <li><Link to="/cart/"><i class="fa-solid fa-cart-shopping"></i> Cart</Link></li>
             </ul>
         </div>
-    </nav>
+    </nav> 
   )
 }
 
