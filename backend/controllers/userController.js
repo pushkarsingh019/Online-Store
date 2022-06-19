@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import bycrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
+import express from "express";
 
 export function userLogin(req, res){
 
@@ -32,4 +33,16 @@ export function userLogin(req, res){
             }
         }
     }) 
+}
+
+export function getProfile(req, res){
+    let id  = req.id;
+    User.findById({_id : id}, (err, user) => {
+        if(err){
+            res.status(404).json({"message" : "error occured"})
+        }
+        else {
+            res.json(user);
+        }
+    })
 }
