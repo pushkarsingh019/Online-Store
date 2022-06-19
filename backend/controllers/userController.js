@@ -1,11 +1,15 @@
 import User from "../models/userModel.js";
 import bycrypt from "bcryptjs";
+import generateToken from "../utils/generateToken.js";
 
 export function userLogin(req, res){
 
     let {email, password} = req.body;
 
     User.find({email : email}, (err, user) => {
+
+        const userData = user[0];
+
         if(err){
             console.log("error occured");
         }
@@ -14,8 +18,13 @@ export function userLogin(req, res){
                 res.json({"message" : "user does not exists"})
             }
             else {
-                if(bycrypt.compareSync(password, user[0].password)){
-                    res.json(user)
+                if(bycrypt.compareSync(password, userData.password)){
+                    res.send({
+                        id : userData._id,
+                        name : userData.name,
+                        password : userData.password,
+                        token : generateToken(userData._id)
+                    });
                 }
                 else{
                     res.json({"message" : "Wrong password", "email" : email})
