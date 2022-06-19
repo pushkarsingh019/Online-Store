@@ -33,6 +33,12 @@ function CartScreen() {
     dispatch(addToCart(productId, quantity));
   }
 
+  function checkoutHandler(){
+    if(cartItems.length !== 0){
+      navigate(`/checkout/`)
+    }
+  }
+
 
 
   return (
@@ -44,9 +50,11 @@ function CartScreen() {
           {cartItems.map((item) => {
             return(
             <div className="cart-component" >
+              <Link to={`/products/${item.product}`}>
               <div className="image-section">
                 <img src={item.image} alt={item.name} key={item.product} width="100%" />
               </div>
+              </Link>
               <div className="info-section">
                 <h3>{item.name}</h3>
                 <div>
@@ -58,7 +66,7 @@ function CartScreen() {
               </div>
               <div className='info-section'>
                   <h3>${item.price}</h3>
-                  <button onClick={() => removeItemHandler(item.product)} className='button delete-item'> <i className="fa-solid fa-circle-trash" /> Remove from Cart</button>
+                  <button onClick={() => removeItemHandler(item.product)} className='button delete-item'> <i className="fa-solid fa-circle-trash" />Remove From Cart</button>
               </div>
 
             </div>
@@ -74,7 +82,7 @@ function CartScreen() {
             <div className='shop-table'>
               <span>Total cost : </span> <span>{cartItems.reduce((total, item) => total + (item.quantity * item.price), 0).toFixed(2)}</span>
             </div>
-            <button className="button cta">Proceed To Checkout</button>
+            <button onClick={checkoutHandler} className={cartItems.length === 0 ? "button cta disabled" : "button cta"}>Proceed To Checkout</button>
           </div>
       </div>
       </div>

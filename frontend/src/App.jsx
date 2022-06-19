@@ -19,6 +19,7 @@ function App(){
                 <Route path="/cart" element={<CartScreen />}>
                     <Route path="/cart/:productId" element={<CartScreen />} />
                 </Route>
+                <Route path="/checkout/" element={<h1>Checkout Page</h1>} />
             </Routes>
         </main>
         {/* <Footer /> */}
