@@ -46,3 +46,17 @@ export function getProfile(req, res){
         }
     })
 }
+
+export function addUser(req, res){
+    let {name, email, password} = req.body;
+    password = bycrypt.hashSync(password, 3);
+    const newUser = new User({
+        name : name, 
+        email : email,
+        password : password
+    })
+
+    newUser.save();
+
+    res.json(newUser);
+}
