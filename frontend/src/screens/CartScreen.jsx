@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import { addToCart, removeFromCart } from '../actions/cartActions';
-import {useParams, useSearchParams, useNavigate} from "react-router-dom";
+import {useParams, useSearchParams, useNavigate, Link} from "react-router-dom";
 import "../index.css"
 
 
@@ -10,7 +10,7 @@ function CartScreen() {
   const {productId} = useParams();
   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams("");
-  const [removeId, setRemoveId] = useState();
+  // const [removeId, setRemoveId] = useState();
   let quantity = Number(searchParams.toString().split("=")[1]);
 
   const dispatch = useDispatch();
@@ -18,13 +18,17 @@ function CartScreen() {
   const {cartItems} = cart;
 
   useEffect(() => {
-    dispatch(addToCart(productId, quantity));
-  })
+    if(productId){
+      console.log(`passed product Id -> ${productId}`);
+      dispatch(addToCart(productId, quantity));
+      navigate(`/cart`);
+    }
+  }, [dispatch, productId, quantity, navigate]);
+
 
   function removeItemHandler(id){
-    setRemoveId(id);
 
-    dispatch(removeFromCart(removeId));
+    dispatch(removeFromCart(id));
     navigate('/cart');
     dispatch(addToCart(productId, quantity));
   }
