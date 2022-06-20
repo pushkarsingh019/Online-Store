@@ -1,16 +1,16 @@
-import react from "react";
 import { authenticateUser } from "../actions/userActions";
 import { useState } from "react";
 import Loading from "../components/Loading";
-
+import { useNavigate } from "react-router-dom";
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 
 function LoginScreen() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const userLogin = useSelector(state => state.userLogin);
-    const {loading, error, userInfo} = userLogin;
+    const {loading} = userLogin;
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,6 +19,7 @@ function LoginScreen() {
     function formSubmitHandler(e){
         dispatch(authenticateUser(email, password))
         e.preventDefault();
+        navigate(`/users/profile`)
     }
 
     return (

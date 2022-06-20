@@ -23,6 +23,7 @@ export function userLogin(req, res){
                     res.send({
                         id : userData._id,
                         name : userData.name,
+                        isAdmin : userData.isAdmin,
                         password : userData.password,
                         token : generateToken(userData._id)
                     });
