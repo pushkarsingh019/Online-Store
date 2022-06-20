@@ -16,7 +16,7 @@ export function userLogin(req, res){
         }
         else {
             if(user.length === 0){
-                res.json({"message" : "user does not exists"})
+                res.json({"message" : "user does not exists"}).status(401);
             }
             else {
                 if(bycrypt.compareSync(password, userData.password)){
@@ -28,7 +28,7 @@ export function userLogin(req, res){
                     });
                 }
                 else{
-                    res.json({"message" : "Wrong password", "email" : email})
+                    res.json({"message" : "Wrong password", "email" : email}).status(401);
                 }
             }
         }
