@@ -260,6 +260,36 @@
 }
 
 
+/* login screen  */
+.login-screen {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 2rem;
+    margin: 5rem;
+    padding: 2rem 1rem;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.login-form input {
+    margin: 8px 0px;
+    padding: 10px 12px;
+    font-size: large;
+}
+
+.login-form button {
+    width: 25%;
+    margin: 10px 0px 0px 0px;
+}
+
+.login-form cta {
+    width: 100%;
+    padding: 5px 15px;
+}
+
+
 
 
 
