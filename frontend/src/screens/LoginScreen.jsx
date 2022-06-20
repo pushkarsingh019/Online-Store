@@ -4,6 +4,7 @@ import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function LoginScreen() {
 
@@ -35,6 +36,8 @@ function LoginScreen() {
             <input type="password" name="password" placeholder="Enter password" onChange={e => setPassword(e.target.value)} />
             <br />
             <button type="submit" className="button cta">Login</button>
+            <br />
+            <p>New user ? <Link className="link-text" to="/register">register here</Link></p>
         </form>
         }
         </div>

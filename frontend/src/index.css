@@ -281,7 +281,7 @@
 
 .login-form button {
     width: 25%;
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0px 10px 0px;
 }
 
 .login-form cta {
@@ -324,6 +324,12 @@
         width: 550px;
     }
 
+}
+
+
+.link-text {
+    text-decoration: none;
+    color: var(--second-color);
 }
 
 @media (max-width : 900px){
