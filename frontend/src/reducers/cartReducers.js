@@ -7,6 +7,7 @@ export const cartReducer = (state  = {cartItems : []}, action) => {
 
             const existItem = state.cartItems.find((x) => x.product === item.product);
 
+           if(item.product !== undefined){
             if (existItem) {
                 return {
                     ...state,
@@ -18,6 +19,13 @@ export const cartReducer = (state  = {cartItems : []}, action) => {
                     cartItems : [...state.cartItems, item]
                 }
             }
+           }
+           else {
+            return {
+                ...state,
+                cartItems : [...state.cartItems]
+            }
+           }
 
         case CART_REMOVE_ITEM:
             return{
