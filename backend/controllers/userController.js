@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import bycrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
 import express from "express";
+import { updateUserAuthentication } from "../middleware/authenticationMiddleware.js";
 
 export function userLogin(req, res){
 
@@ -16,19 +17,21 @@ export function userLogin(req, res){
         }
         else {
             if(user.length === 0){
-                res.json({"message" : "user does not exists"})
+                res.json({"message" : "user does not exists"}).status(401);
             }
             else {
                 if(bycrypt.compareSync(password, userData.password)){
                     res.send({
                         id : userData._id,
+                        email : userData.email,
                         name : userData.name,
+                        isAdmin : userData.isAdmin,
                         password : userData.password,
                         token : generateToken(userData._id)
                     });
                 }
                 else{
-                    res.json({"message" : "Wrong password", "email" : email})
+                    res.json({"message" : "Wrong password", "email" : email}).status(401);
                 }
             }
         }
@@ -59,4 +62,34 @@ export function addUser(req, res){
     newUser.save();
 
     res.json(newUser);
+}
+
+export function updateUser(req, res){
+    const {name, email, password, token} = req.body;
+    const _id = updateUserAuthentication(token);
+
+    User.updateOne({_id : _id}, {
+        name : name,
+        email : email,
+        password  : bycrypt.hashSync(password, 3)
+    }, (err, user) => {
+        if(err){
+            res.status(500).send(err);
+        }
+        else {
+            res.status(201).send("user updated ->" + user);
+        }
+    })
+
+}
+
+export function getUsers(req,res){
+    User.find({}, (err, users) => {
+        if(err){
+            res.send(err)
+        }
+        else {
+            res.send(users)
+        }
+    })
 }

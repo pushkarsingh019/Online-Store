@@ -1,4 +1,4 @@
-import jwt, { decode } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import dotenv from "dotenv";
 import express from "express";
@@ -7,7 +7,7 @@ dotenv.config();
 
 export default function authenticateUser(req, res, next){
     let rawToken = req.headers.authorization;
-    let TOKEN = rawToken.split(' ')[1];
+    let TOKEN = rawToken.split(" ")[1];
     let decoded;
     
     
@@ -25,4 +25,11 @@ export default function authenticateUser(req, res, next){
             next();
         }
     })
+}
+
+export function updateUserAuthentication(token){
+    const decoded = jwt.verify(token, "authentication");
+    let _id = decoded.id;
+
+    return _id;
 }
