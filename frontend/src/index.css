@@ -290,6 +290,20 @@
 }
 
 
+/* profile screen */
+.profile-screen {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.update-profile {
+    /* text-align: left; */
+}
+
+.update-profile-elements {
+    margin: 5px 0px;
+}
+
 
 
 

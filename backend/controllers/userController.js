@@ -23,6 +23,7 @@ export function userLogin(req, res){
                 if(bycrypt.compareSync(password, userData.password)){
                     res.send({
                         id : userData._id,
+                        email : userData.email,
                         name : userData.name,
                         isAdmin : userData.isAdmin,
                         password : userData.password,
