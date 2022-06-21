@@ -15,6 +15,7 @@ function CartScreen() {
 
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
+  const userData = useSelector(state => state.userLogin);
   const {cartItems} = cart;
 
   useEffect(() => {
@@ -34,9 +35,31 @@ function CartScreen() {
   }
 
   function checkoutHandler(){
-    if(cartItems.length !== 0){
-      navigate(`/checkout/`)
+
+    if(userData){
+      let {userInfo} = userData;
+      if(JSON.stringify(userInfo) === "{}"){
+        navigate('/signin');
+      }
+      else {
+        if(cartItems.length !== 0){
+          navigate("/checkout")
+        }
+      }
     }
+    else {
+      navigate('/signin');
+    }
+
+    // if(JSON.stringify(userInfo) === "{}"){
+    //   navigate("/signin");
+    // }
+    // if (JSON.stringify(userInfo) !== "{}"){
+    //    if(cartItems.length !== 0){
+    //       navigate(`/checkout/`)
+    //     }
+    // }
+   
   }
 
 
@@ -87,6 +110,6 @@ function CartScreen() {
       </div>
       </div>
   )
-}
+        }
 
 export default CartScreen

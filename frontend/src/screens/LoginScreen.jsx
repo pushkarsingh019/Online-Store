@@ -20,7 +20,7 @@ function LoginScreen() {
     function formSubmitHandler(e){
         dispatch(authenticateUser(email, password))
         e.preventDefault();
-        navigate(`/users/profile`)
+        navigate("/checkout");
     }
 
     return (
