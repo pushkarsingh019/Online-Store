@@ -1,4 +1,4 @@
-import { ADDRESS_SAVE_FAIL, ADDRESS_SAVE_REQUEST, ADDRESS_SAVE_SUCCESS } from "../constants/orderConstants"
+import { ADDRESS_SAVE_FAIL, ADDRESS_SAVE_REQUEST, ADDRESS_SAVE_SUCCESS, PAYMENT_METHOD_SAVE } from "../constants/orderConstants"
 
 export const saveAddress = (address, city, pincode, state, country) => async(dispatch, getState) => {
     try {
@@ -21,4 +21,13 @@ export const saveAddress = (address, city, pincode, state, country) => async(dis
         })
     }
 
+}
+
+export const paymentMethod = (methodName) => async(dispatch, getState) => {
+    dispatch({
+        type : PAYMENT_METHOD_SAVE,
+        payload : methodName
+    })
+
+    localStorage.setItem('paymentMethod', getState().payment.paymentMethod);
 }

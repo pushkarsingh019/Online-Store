@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { saveAddress } from '../actions/orderActions';
 
 function AddressScreen() {
@@ -12,9 +13,11 @@ function AddressScreen() {
     const [country,setCountry] = useState("");
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function addressHandler(e){
-        dispatch(saveAddress(address, city, pincode, state, country))
+        dispatch(saveAddress(address, city, pincode, state, country));
+        navigate('/payment');
         e.preventDefault();
     }
 

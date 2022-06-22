@@ -11,6 +11,7 @@ import AddressScreen from "./screens/AddressScreen";
 
 // importing react router
 import {BrowserRouter,Routes, Route} from "react-router-dom";
+import PaymentScreen from "./screens/PaymentScreen";
 
 
 function App(){
@@ -24,6 +25,7 @@ function App(){
                 <Route path="/users/profile" element={<ProfileScreen />} />
                 <Route path="/signin" element={<LoginScreen />} />
                 <Route path="/register" element={<RegisterScreen />} />
+                <Route path="/payment" element={<PaymentScreen />} />
                 <Route path="/address" element={<AddressScreen />} />
                 <Route path="/cart" element={<CartScreen />}>
                     <Route path="/cart/:productId" element={<CartScreen />} />
