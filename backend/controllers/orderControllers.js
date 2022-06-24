@@ -1,7 +1,6 @@
 import Order from "../models/orderModel.js";
 
 export const createOrder = (req, res) => {
-    console.log("in the create order conteoller")
     const orderData = req.body;
     const {orderItems, shippingAddress, paymentMethod, shippingPrice, totalPrice, } = orderData;
 
@@ -23,4 +22,17 @@ export const createOrder = (req, res) => {
         res.status(201).send(order)
     }
 
+}
+
+export const getOrderById = (req, res) => {
+    const orderId = req.params.orderId;
+    Order.findById({_id : orderId}, (err, order) => {
+        if(err){
+            res.status(404)
+            throw new Error("Order not found")
+        }
+        else {
+            res.send(order)
+        }
+    })
 }
