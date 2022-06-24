@@ -6,10 +6,13 @@ import express from "express";
 dotenv.config();
 
 export default function authenticateUser(req, res, next){
+    console.log("in the authentication function");
     let rawToken = req.headers.authorization;
-    let TOKEN = rawToken.split(" ")[1];
+    let TOKEN;
+    TOKEN = rawToken.split(" ")[1];
+
     let decoded;
-    
+    console.log(TOKEN);
     
     decoded = jwt.verify(TOKEN, "authentication");
     

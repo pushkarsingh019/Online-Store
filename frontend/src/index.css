@@ -121,6 +121,8 @@
     box-shadow: 2px 2px 1px #eee;
     padding: 10px;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .product-card:hover{
@@ -305,6 +307,52 @@
 }
 
 
+/* Checkout steps  component */
+/* .checkout-steps {
+    display: flex;
+    gap: 1rem;
+}
+
+.checkout-steps .span {
+    color: green;
+} */
+
+
+
+
+/* ----------------------------- */
+
+
+
+/* Order Screen */
+.order-screen {
+    margin: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
+    line-height: 1.2;
+}
+
+.order-details {
+    margin: 2rem 0rem;
+}
+
+.order-page-grid {
+    margin: 12px 0px;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 2fr 1fr;
+}
+
+.order-card {
+    margin: 10px;
+}
+
+.delete-product {
+    padding: 2px 5px;
+    background-color: white;
+    color: red;
+    border: none;
+    border-radius: 12px;
+}
 
 
 /* media queries */

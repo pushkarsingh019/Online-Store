@@ -6,9 +6,10 @@ const orderSchema = new mongoose.Schema({
         required : true,
         ref : "User"
     },
-    orderItems : {
+    orderItems : [ {
+    
         name  : {type : String, required : true},
-        qty : {type : Number, required : true},
+        quantity : {type : Number, required : true},
         image : {type : String, required : true},
         price : {type : Number, required : true},
         product : {
@@ -17,11 +18,14 @@ const orderSchema = new mongoose.Schema({
             ref : "Product"
         },
     },
+],
     shippingAddress : {
-        address : {type : String, required : true},
-        city : {type : String, required : true},
-        postalCode : {type : String, required : true},
-        country : {type : String}
+        type : String,
+        required : true
+        // address : {type : String, required : true},
+        // city : {type : String, required : true},
+        // postalCode : {type : String, required : true},
+        // country : {type : String}
     },
     paymentMethod : {
         type : String,
@@ -31,12 +35,7 @@ const orderSchema = new mongoose.Schema({
         id : {type : String},
         status : {type : String},
         update_time : {type : String},
-        email : {type : String}
-    },
-    taxPrice : {
-        type : Number,
-        required : true,
-        default : 0.0
+        email : {type : String},
     },
     shippingPrice : {
         type : Number,

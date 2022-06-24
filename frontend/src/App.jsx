@@ -8,6 +8,7 @@ import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import AddressScreen from "./screens/AddressScreen";
+import OrderScreen from "./screens/OrderScreen";
 
 // importing react router
 import {BrowserRouter,Routes, Route} from "react-router-dom";
@@ -27,6 +28,7 @@ function App(){
                 <Route path="/register" element={<RegisterScreen />} />
                 <Route path="/payment" element={<PaymentScreen />} />
                 <Route path="/address" element={<AddressScreen />} />
+                <Route path="/order" element={<OrderScreen />} />
                 <Route path="/cart" element={<CartScreen />}>
                     <Route path="/cart/:productId" element={<CartScreen />} />
                 </Route>

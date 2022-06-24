@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import {useParams, useSearchParams, useNavigate, Link} from "react-router-dom";
@@ -20,7 +20,7 @@ function CartScreen() {
 
   useEffect(() => {
     if(productId){
-      console.log(`passed product Id -> ${productId}`);
+      // console.log(`passed product Id -> ${productId}`);
       dispatch(addToCart(productId, quantity));
       navigate(`/cart`);
     }

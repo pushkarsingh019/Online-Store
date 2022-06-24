@@ -22,7 +22,8 @@ function AddressScreen() {
     }
 
     return (
-        <form className='login-form' onSubmit={addressHandler}>
+        <div>
+            <form className='login-form' onSubmit={addressHandler}>
             <input type="text" placeholder='Complete Address'  onChange={(e) => setAddress(e.target.value)}/>
             <br />
             <input type="text" placeholder='Enter City'  onChange={(e) => setCity(e.target.value)}/>
@@ -35,6 +36,7 @@ function AddressScreen() {
             <br />
             <button type="submit" className='button cta'>Add Address</button>
         </form>
+        </div>
 )
 }
 

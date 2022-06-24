@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { paymentMethod } from '../actions/orderActions';
+import CheckoutSteps from '../components/CheckoutSteps';
 
 function PaymentScreen() {
 
@@ -11,12 +12,13 @@ function PaymentScreen() {
 
   function paymentChoiceHandler(){
     dispatch(paymentMethod(method))
-    navigate('/checkout');
+    navigate('/order');
   }
 
 
   return (
-    <div className='login-screen'>
+    <div>
+      <div className='login-screen'>
         <div>
             <h1 className='header'>How do you want to pay?</h1>
             <br />
@@ -25,6 +27,7 @@ function PaymentScreen() {
             <br />
             <button onClick={paymentChoiceHandler} className='button cta'>Choose payment method</button>
         </div>
+    </div>
     </div>
   )
 }
